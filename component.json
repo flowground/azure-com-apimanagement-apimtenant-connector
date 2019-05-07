@@ -1,0 +1,254 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on tenant entity associated with your Azure API Management deployment. Using this entity you can manage properties and configuration that apply to the entire API Management service instance.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimtenant/2018-06-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "TenantAccess_Get": {
+            "main": "./lib/actions/TenantAccess_Get.js",
+            "title": "Get tenant access information details",
+            "description": "Get tenant access information details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccess_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccess_GetEntityTag": {
+            "main": "./lib/actions/TenantAccess_GetEntityTag.js",
+            "title": "Tenant access metadata",
+            "description": "Tenant access metadata",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccess_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccess_Update": {
+            "main": "./lib/actions/TenantAccess_Update.js",
+            "title": "Update tenant access information details.",
+            "description": "Update tenant access information details.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccess_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccessGit_Get": {
+            "main": "./lib/actions/TenantAccessGit_Get.js",
+            "title": "Gets the Git access configuration for the tenant.",
+            "description": "Gets the Git access configuration for the tenant.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccessGit_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccessGit_RegeneratePrimaryKey": {
+            "main": "./lib/actions/TenantAccessGit_RegeneratePrimaryKey.js",
+            "title": "Regenerate primary access key for GIT.",
+            "description": "Regenerate primary access key for GIT.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccessGit_RegeneratePrimaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccessGit_RegenerateSecondaryKey": {
+            "main": "./lib/actions/TenantAccessGit_RegenerateSecondaryKey.js",
+            "title": "Regenerate secondary access key for GIT.",
+            "description": "Regenerate secondary access key for GIT.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccessGit_RegenerateSecondaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccess_RegeneratePrimaryKey": {
+            "main": "./lib/actions/TenantAccess_RegeneratePrimaryKey.js",
+            "title": "Regenerate primary access key",
+            "description": "Regenerate primary access key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccess_RegeneratePrimaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantAccess_RegenerateSecondaryKey": {
+            "main": "./lib/actions/TenantAccess_RegenerateSecondaryKey.js",
+            "title": "Regenerate secondary access key",
+            "description": "Regenerate secondary access key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantAccess_RegenerateSecondaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantConfiguration_Deploy": {
+            "main": "./lib/actions/TenantConfiguration_Deploy.js",
+            "title": "This operation applies changes from the specified Git branch to the configuration database. This is a long running operation and could take several minutes to complete.",
+            "description": "This operation applies changes from the specified Git branch to the configuration database. This is a long running operation and could take several minutes to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantConfiguration_Deploy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantConfiguration_Save": {
+            "main": "./lib/actions/TenantConfiguration_Save.js",
+            "title": "This operation creates a commit with the current configuration snapshot to the specified branch in the repository. This is a long running operation and could take several minutes to complete.",
+            "description": "This operation creates a commit with the current configuration snapshot to the specified branch in the repository. This is a long running operation and could take several minutes to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantConfiguration_Save.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantConfiguration_GetSyncState": {
+            "main": "./lib/actions/TenantConfiguration_GetSyncState.js",
+            "title": "Gets the status of the most recent synchronization between the configuration database and the Git repository.",
+            "description": "Gets the status of the most recent synchronization between the configuration database and the Git repository.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantConfiguration_GetSyncState.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TenantConfiguration_Validate": {
+            "main": "./lib/actions/TenantConfiguration_Validate.js",
+            "title": "This operation validates the changes in the specified Git branch. This is a long running operation and could take several minutes to complete.",
+            "description": "This operation validates the changes in the specified Git branch. This is a long running operation and could take several minutes to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TenantConfiguration_Validate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

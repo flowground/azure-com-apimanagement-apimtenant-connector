@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "configurationName": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "configuration"
+            ]
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the Deploy Configuration operation.",
+            "properties": {
+                "branch": {
+                    "description": "The name of the Git branch from which the configuration is to be deployed to the configuration database.",
+                    "type": "string"
+                },
+                "force": {
+                    "description": "The value enforcing deleting subscriptions to products that are deleted in this update.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "branch"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

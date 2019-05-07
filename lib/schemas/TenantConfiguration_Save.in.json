@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "configurationName": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "configuration"
+            ]
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the Save Tenant Configuration operation.",
+            "properties": {
+                "branch": {
+                    "description": "The name of the Git branch in which to commit the current configuration snapshot.",
+                    "type": "string"
+                },
+                "force": {
+                    "description": "The value if true, the current configuration database is committed to the Git repository, even if the Git repository has newer changes that would be overwritten.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "branch"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
